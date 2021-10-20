@@ -54,10 +54,8 @@ export class Adress extends BaseEntity {
   isDefault: boolean;
 
   @ManyToOne(type => Person, person => person.adresses)
-  // @ApiProperty({ type: () => Person })
   person: Person;
 
   @ManyToOne(type => Organisation, organisation => organisation.adresses)
-  // @ApiProperty({ type: () => Organisation })
   organisation: Organisation;
 }

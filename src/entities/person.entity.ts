@@ -72,6 +72,13 @@ export class Person extends BaseEntity {
   documentGivenDate: Date;
 
   @Column({
+    type: 'varchar',
+    length: 255,
+  })
+  @ApiProperty()
+  PINFL: string;
+
+  @Column({
     type: 'date'
   })
   @ApiProperty()

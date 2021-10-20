@@ -9,11 +9,11 @@ export class OrganisationTypeService {
     @InjectRepository(OrganisationType)
     private organisationType: Repository<OrganisationType>
   ) {}
-  findAll() {
+  findAll(): Promise<OrganisationType[]> {
     return this.organisationType.find();
   }
 
-  findOne(id: number) {
+  findOne(id: number): Promise<OrganisationType> {
     return this.organisationType.findOne(id);
   }
 }
