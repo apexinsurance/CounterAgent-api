@@ -1,25 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, ManyToOne } from 'typeorm';
 import { BaseEntity } from './base-entity.entity';
+import { ContactTypeEnum } from './enums/contactType.enum';
 import { Organisation } from './organisation.entity';
 import { Person } from './person.entity';
-
-export enum Type {
-  PHONE = 'PHONE',
-  EMAIL = 'EMAIL',
-  MESSENGER = 'MESSENGER',
-  WEBSITE = 'WEBSITE',
-  SOCIAL_NETWORK = 'SOCIAL_NETWORK',
-}
 
 @Entity()
 export class Contact extends BaseEntity {
   @Column({
     type: 'enum',
-    enum: Type,
+    enum: ContactTypeEnum,
   })
-  @ApiProperty({enum: Type})
-  type: Type;
+  @ApiProperty({enum: ContactTypeEnum})
+  type: ContactTypeEnum;
 
   @Column({
     type: 'varchar',

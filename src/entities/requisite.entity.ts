@@ -1,14 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Entity, Column, ManyToMany, ManyToOne } from "typeorm";
+import { Entity, Column, ManyToOne } from "typeorm";
 import { BaseEntity } from "./base-entity.entity";
+import { RequisiteTypeEnum } from "./enums/requisiteType.enum";
 import { Organisation } from "./organisation.entity";
 import { Person } from "./person.entity";
-
-export enum Type {
-  LOCAL_BANK = 'LOCAL_BANK',
-  INTERNATIONAL_BANK = 'INTERNATIONAL_BANK',
-  PAYMENT_SYSTEM = 'PAYMENT_SYSTEM',
-}
 
 @Entity()
 export class Requisite extends BaseEntity {
@@ -21,10 +16,10 @@ export class Requisite extends BaseEntity {
 
   @Column({
     type: 'enum',
-    enum: Type,
+    enum: RequisiteTypeEnum,
   })
-  @ApiProperty({enum: Type})
-  type: Type;
+  @ApiProperty({enum: RequisiteTypeEnum})
+  type: RequisiteTypeEnum;
 
   @Column({
     type: 'varchar',

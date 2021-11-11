@@ -3,20 +3,9 @@ import { Column, Entity, OneToMany } from "typeorm";
 import { Adress } from "./adress.entity";
 import { BaseEntity } from "./base-entity.entity";
 import { Contact } from "./contact.entity";
+import { CounterAgentTypeEnum } from "./enums/counterAgentType.enum";
+import { PersonTypeEnum } from "./enums/personType.enum";
 import { Requisite } from "./requisite.entity";
-
-export enum Type {
-  RESIDENT = 'RESITENT',
-  MILITARY = 'MILITARY',
-  FOREIGN_RESIDENT = 'FOREIGN_RESIDENT',
-  FOREIGNER = 'FOREIGNER',
-  WITHOUT_CITIZENSHIP = 'WITHOUT_CITIZENSHIP',
-}
-
-export enum CounterAgentType {
-  ORGANISATION = 'ORGANISATION',
-  PERSON = 'PERSON',
-}
 
 export enum Gender {
   MALE = 'MALE',
@@ -27,10 +16,10 @@ export enum Gender {
 export class Person extends BaseEntity {
   @Column({
     type: 'enum',
-    enum: CounterAgentType,
+    enum: CounterAgentTypeEnum,
   })
-  @ApiProperty({enum: CounterAgentType})
-  counterAgentType: CounterAgentType
+  @ApiProperty({enum: CounterAgentTypeEnum})
+  counterAgentType: CounterAgentTypeEnum
 
   @Column({
     type: 'int',
@@ -40,10 +29,10 @@ export class Person extends BaseEntity {
   
   @Column({
     type: 'enum',
-    enum: Type,
+    enum: PersonTypeEnum,
   })
-  @ApiProperty({enum: Type})
-  type: Type
+  @ApiProperty({enum: PersonTypeEnum})
+  type: PersonTypeEnum
 
   @Column({
     type: 'boolean',

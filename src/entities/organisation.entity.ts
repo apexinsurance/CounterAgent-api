@@ -3,18 +3,18 @@ import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
 import { Adress } from "./adress.entity";
 import { BaseEntity } from "./base-entity.entity";
 import { Contact } from "./contact.entity";
+import { CounterAgentTypeEnum } from "./enums/counterAgentType.enum";
 import { OrganisationType } from "./organisation-type.entity";
-import { CounterAgentType } from "./person.entity";
 import { Requisite } from "./requisite.entity";
 
 @Entity()
 export class Organisation extends BaseEntity {
   @Column({
     type: 'enum',
-    enum: CounterAgentType,
+    enum: CounterAgentTypeEnum,
   })
-  @ApiProperty({enum: CounterAgentType})
-  counterAgentType: CounterAgentType
+  @ApiProperty({enum: CounterAgentTypeEnum})
+  counterAgentType: CounterAgentTypeEnum
   
   @Column({
     type: 'varchar',
