@@ -1,0 +1,5 @@
+export enum RequisiteTypeEnum {
+    LOCAL_BANK = 'LOCAL_BANK',
+    INTERNATIONAL_BANK = 'INTERNATIONAL_BANK',
+    PAYMENT_SYSTEM = 'PAYMENT_SYSTEM',
+}

@@ -8,15 +8,13 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('CounterAgent API')
     .setDescription('Documentation')
-    .setVersion('1.0')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('docs', app, document);
 
   app.enableCors();
 
-  app.setGlobalPrefix('rest/v1');
   await app.listen(process.env.APP_PORT);
 }
 bootstrap();

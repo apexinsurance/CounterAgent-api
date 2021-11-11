@@ -4,7 +4,6 @@ import { Contact } from 'src/entities/contact.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Contact])],
-  providers: [ContactService],
+  imports: [TypeOrmModule.forFeature([Contact])]
 })
 export class ContactModule {}

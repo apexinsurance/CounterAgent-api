@@ -1,23 +1,18 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Column, Entity, ManyToOne } from "typeorm";
 import { BaseEntity } from "./base-entity.entity";
+import { AddressTypeEnum } from "./enums/addressType.enum";
 import { Organisation } from "./organisation.entity";
 import { Person } from "./person.entity";
-
-export enum Type {
-  ACTUAL = 'ACTUAL',
-  REGISTERED = 'REGISTERED',
-  POSTAL = 'POSTAL',
-}
 
 @Entity()
 export class Adress extends BaseEntity {
   @Column({
     type: 'enum',
-    enum: Type,
+    enum: AddressTypeEnum,
   })
-  @ApiProperty({enum: Type})
-  type: Type
+  @ApiProperty({enum: AddressTypeEnum})
+  type: AddressTypeEnum
 
   @Column({
     type: 'varchar',
