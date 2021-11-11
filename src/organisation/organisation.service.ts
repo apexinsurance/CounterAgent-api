@@ -11,6 +11,9 @@ export class OrganisationService {
   ) {}
   getAll(): Promise<Organisation[]> {
     return this.organisationRepository.find({
+      where: {
+        isDeleted: false,
+      },
       relations: ['adresses', 'contacts', 'organisationType', 'requisites'],
     });
   }
@@ -19,6 +22,7 @@ export class OrganisationService {
     return this.organisationRepository.findOne({
       where: {
         id,
+        isDeleted: false,
       },
       relations: ['adresses, contacts, organisationType', 'requisites'],
     });

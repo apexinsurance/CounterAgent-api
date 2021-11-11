@@ -10,10 +10,17 @@ export class OrganisationTypeService {
     private organisationType: Repository<OrganisationType>
   ) {}
   findAll(): Promise<OrganisationType[]> {
-    return this.organisationType.find();
+    return this.organisationType.find({
+      isDeleted: false,
+    });
   }
 
   findOne(id: number): Promise<OrganisationType> {
-    return this.organisationType.findOne(id);
+    return this.organisationType.findOne({
+      where: {
+        id,
+        isDeleted: false,
+      }
+    });
   }
 }

@@ -11,6 +11,9 @@ export class PersonService {
   ) {}
   getAll() {
     return this.personRepository.find({
+      where: {
+        isDeleted: false,
+      },
       relations: ['adresses', 'contacts', 'requisites'],
   });
   }
@@ -19,6 +22,7 @@ export class PersonService {
     return this.personRepository.findOne({
       where: {
         id,
+        isDeleted: false,
       }, 
       relations: ['adresses', 'contacts', 'requisites'],
     })
